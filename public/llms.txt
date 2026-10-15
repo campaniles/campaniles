@@ -1,0 +1,31 @@
+# Campaniles
+
+> Campaniles is an independent, community-first media platform for computer science and information technology. It is a place to publish, read, and discuss technical writing, news, and analysis without the noise and incentives of ad-driven feeds. The project is free and open source under the Apache License 2.0.
+
+Principles:
+- Community first: the people who read and write here shape the platform.
+- Independent: no corporate gatekeeping, no pay-to-play ranking.
+- Open source: the code is public, auditable, and built in the open.
+- Technically focused: content is for and by the CS/IT community.
+
+Audience: software engineers, students, researchers, and technologists who want substantive technical content and discussion.
+
+## Site
+
+- [Home](https://campaniles.com/): Landing page for the platform.
+
+## Legal
+
+- [Terms of Service](https://campaniles.com/legal/terms): Terms that govern use of the platform.
+- [Privacy Policy](https://campaniles.com/legal/privacy): How Campaniles collects, uses, and protects personal data.
+- [Cookie Policy](https://campaniles.com/legal/cookies): How and why Campaniles uses cookies.
+
+## Technical
+
+- Framework: Next.js 16 (App Router), React 19, TypeScript 5.
+- Styling: Tailwind CSS 4 with shadcn/ui components.
+- Internationalization: next-intl (English default, unprefixed root).
+
+## Optional
+
+- [Repository](https://github.com/campaniles/campaniles): Public source code (Apache 2.0).
