@@ -19,7 +19,7 @@ export default async function LegalLayout({
 
   return (
     <AppLayout>
-      <article className="prose prose-zinc mx-auto max-w-3xl dark:prose-invert">
+      <article className="prose prose-sm prose-zinc mx-auto max-w-3xl break-words sm:prose-base dark:prose-invert">
         {children}
       </article>
     </AppLayout>
