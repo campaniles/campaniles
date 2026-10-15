@@ -8,7 +8,7 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
     <header
       data-slot="app-header"
       className={cn(
-        "sticky top-0 z-40 w-full bg-background/80 backdrop-blur",
+        "fixed inset-x-0 top-10 z-40 h-14 w-full bg-background",
         className
       )}
       {...props}

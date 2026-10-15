@@ -9,8 +9,10 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
 
   return (
     <AppLayout>
-      <Hero />
-      <Cta />
+      <div className="flex min-h-full flex-1 flex-col justify-between gap-12">
+        <Hero />
+        <Cta />
+      </div>
     </AppLayout>
   );
 }

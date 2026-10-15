@@ -1,10 +1,11 @@
 {
   "home": {
     "hero": {
-      "heading": "Campaniles"
+      "titleLine1": "The intelligence",
+      "titleLine2": "behind technology."
     },
     "cta": {
-      "heading": ""
+      "explore": "Explore Campaniles"
     }
   }
 }

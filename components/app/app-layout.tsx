@@ -21,8 +21,8 @@ function AppLayout({ className, children, ...props }: AppLayoutProps) {
         </div>
       </AppTopbar>
       <AppHeader />
-      <main className="flex flex-1 flex-col">
-        <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
+      <main className="flex flex-1 flex-col pt-24">
+        <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 py-8 sm:px-6 sm:py-12">
           {children}
         </div>
       </main>

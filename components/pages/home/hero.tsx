@@ -11,11 +11,12 @@ function Hero({ className, ...props }: HeroProps) {
     <section
       id="hero"
       data-slot="home-hero"
-      className={cn("w-full", className)}
+      className={cn("flex w-full flex-col items-center text-center", className)}
       {...props}
     >
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-        {t("heading")}
+      <h1 className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl">
+        <span className="block">{t("titleLine1")}</span>
+        <span className="block text-muted-foreground">{t("titleLine2")}</span>
       </h1>
     </section>
   );

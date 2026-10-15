@@ -11,12 +11,12 @@ function Cta({ className, ...props }: CtaProps) {
     <section
       id="cta"
       data-slot="home-cta"
-      className={cn("w-full", className)}
+      className={cn("flex w-full flex-col items-center text-center", className)}
       {...props}
     >
-      <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-        {t("heading")}
-      </h2>
+      <div className="flex h-24 w-full items-center justify-center rounded-xl bg-primary px-6 text-xl font-semibold text-primary-foreground sm:h-32 sm:text-2xl md:h-40 md:text-3xl">
+        {t("explore")}
+      </div>
     </section>
   );
 }
