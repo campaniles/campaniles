@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { AppLayout } from "@/components/app";
-
-export const metadata: Metadata = {
-  title: "News · Campaniles",
-  description: "Technology news for the computer science and IT community.",
-};
+import { getSection } from "@/lib/content";
+import { NewsToolbar } from "@/components/pages/news";
 
 export default async function NewsPage({
   params,
@@ -14,11 +9,14 @@ export default async function NewsPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const items = await getSection("news");
+
   return (
-    <AppLayout>
+    <section className="flex flex-col gap-8">
       <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         News
       </h1>
-    </AppLayout>
+      <NewsToolbar items={items} />
+    </section>
   );
 }

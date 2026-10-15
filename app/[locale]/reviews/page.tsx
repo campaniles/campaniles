@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { AppLayout } from "@/components/app";
-
-export const metadata: Metadata = {
-  title: "Reviews · Campaniles",
-  description: "Technology reviews for the computer science and IT community.",
-};
+import { getSection } from "@/lib/content";
+import { ReviewToolbar } from "@/components/pages/reviews";
 
 export default async function ReviewsPage({
   params,
@@ -14,11 +9,14 @@ export default async function ReviewsPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const items = await getSection("reviews");
+
   return (
-    <AppLayout>
+    <section className="flex flex-col gap-8">
       <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         Reviews
       </h1>
-    </AppLayout>
+      <ReviewToolbar items={items} />
+    </section>
   );
 }

@@ -44,6 +44,8 @@ export async function getEntry<S extends ContentSection>(
   section: S,
   slug: string
 ): Promise<ContentEntry<S> | null> {
+  "use cache";
+
   const filePath = path.join(CONTENT_ROOT, section, `${slug}.md`);
 
   let raw: string;
@@ -73,6 +75,8 @@ export async function getEntry<S extends ContentSection>(
 export async function getSection<S extends ContentSection>(
   section: S
 ): Promise<ContentSummary<S>[]> {
+  "use cache";
+
   const slugs = await getSlugs(section);
 
   const summaries = await Promise.all(

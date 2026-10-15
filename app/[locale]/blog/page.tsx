@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { AppLayout } from "@/components/app";
-
-export const metadata: Metadata = {
-  title: "Blog · Campaniles",
-  description: "Technical writing and analysis from the Campaniles community.",
-};
+import { getSection } from "@/lib/content";
+import { BlogToolbar } from "@/components/pages/blog";
 
 export default async function BlogPage({
   params,
@@ -14,11 +9,14 @@ export default async function BlogPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const items = await getSection("blog");
+
   return (
-    <AppLayout>
+    <section className="flex flex-col gap-8">
       <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         Blog
       </h1>
-    </AppLayout>
+      <BlogToolbar items={items} />
+    </section>
   );
 }
