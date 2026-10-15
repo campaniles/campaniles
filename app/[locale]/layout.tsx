@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Newsreader } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -8,20 +8,21 @@ import "../globals.css";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/shared/theme";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: "Campaniles",
   description:
     "An independent, community-first media platform for computer science and information technology.",
+  icons: {
+    icon: "/icons/app/favicon.png",
+    shortcut: "/icons/app/favicon.png",
+    apple: "/icons/app/favicon.png",
+  },
 };
 
 export function generateStaticParams() {
@@ -44,7 +45,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>

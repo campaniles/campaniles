@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 
@@ -16,9 +18,17 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="text-base font-semibold tracking-tight text-foreground sm:text-lg"
+          className="flex items-center gap-2 text-base font-semibold tracking-tight text-foreground sm:text-lg"
         >
-          Campaniles
+          <Image
+            src="/icons/app/dark.png"
+            alt=""
+            width={28}
+            height={28}
+            priority
+            className="size-7 object-contain"
+          />
+          <span>Campaniles</span>
         </Link>
       </div>
     </header>
