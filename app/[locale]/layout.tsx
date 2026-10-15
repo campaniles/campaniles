@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/shared/theme";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://campaniles.com"),
   title: "Campaniles",
   description:
     "An independent, community-first media platform for computer science and information technology.",

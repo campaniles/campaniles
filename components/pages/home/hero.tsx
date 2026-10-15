@@ -14,9 +14,9 @@ function Hero({ className, ...props }: HeroProps) {
       className={cn("flex w-full flex-col items-center text-center", className)}
       {...props}
     >
-      <h1 className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl">
+      <h1 className="text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl md:text-6xl">
         <span className="block">{t("titleLine1")}</span>
-        <span className="block text-muted-foreground">{t("titleLine2")}</span>
+        <span className="block text-primary/60">{t("titleLine2")}</span>
       </h1>
     </section>
   );
