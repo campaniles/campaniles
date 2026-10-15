@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Newsreader } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -7,12 +6,6 @@ import "../globals.css";
 
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/shared/theme";
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: "Campaniles",
@@ -45,8 +38,20 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${newsreader.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>{children}</ThemeProvider>

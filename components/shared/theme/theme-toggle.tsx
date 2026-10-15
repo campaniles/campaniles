@@ -13,11 +13,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const THEMES = [
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
-  { value: "system", label: "System" },
-] as const;
+// Only light is offered for now. Add { value: "dark" } / { value: "system" }
+// back here (and drop `forcedTheme` in ThemeProvider) to re-enable them.
+const THEMES = [{ value: "light", label: "Light" }] as const;
 
 type ThemeToggleProps = Omit<
   React.ComponentProps<typeof Button>,
