@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 import type { ContentSummary } from "@/lib/content";
 import { BlogGrid } from "@/components/pages/blog/blog-grid";
 
@@ -34,13 +35,13 @@ function BlogSearch({ items, className, ...props }: BlogSearchProps) {
       className={cn("flex flex-col gap-6", className)}
       {...props}
     >
-      <input
+      <Input
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search posts"
         aria-label="Search posts"
-        className="h-10 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="h-10"
       />
       <BlogGrid items={filtered} />
     </div>

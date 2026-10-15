@@ -5,6 +5,8 @@ import { LayoutGrid, List } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -81,13 +83,13 @@ function EventToolbar({
       {...props}
     >
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-        <input
+        <Input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Filter events"
           aria-label="Filter events"
-          className="h-9 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 sm:max-w-xs"
+          className="h-9 sm:max-w-xs"
         />
 
         <div className="flex items-center gap-2 sm:ml-auto">
@@ -113,26 +115,22 @@ function EventToolbar({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <div className="flex items-center gap-1">
-            <Button
-              variant={view === "grid" ? "secondary" : "ghost"}
-              size="icon-sm"
-              aria-label="Grid view"
-              aria-pressed={view === "grid"}
-              onClick={() => setView("grid")}
-            >
+          <ToggleGroup
+            variant="outline"
+            size="sm"
+            value={[view]}
+            onValueChange={(v) => {
+              const next = v.at(-1);
+              if (next === "grid" || next === "list") setView(next);
+            }}
+          >
+            <ToggleGroupItem value="grid" aria-label="Grid view">
               <LayoutGrid />
-            </Button>
-            <Button
-              variant={view === "list" ? "secondary" : "ghost"}
-              size="icon-sm"
-              aria-label="List view"
-              aria-pressed={view === "list"}
-              onClick={() => setView("list")}
-            >
+            </ToggleGroupItem>
+            <ToggleGroupItem value="list" aria-label="List view">
               <List />
-            </Button>
-          </div>
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
       </div>
 

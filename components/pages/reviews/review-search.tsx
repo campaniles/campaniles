@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 import type { ContentSummary } from "@/lib/content";
 import { ReviewGrid } from "@/components/pages/reviews/review-grid";
 
@@ -39,13 +40,13 @@ function ReviewSearch({ items, className, ...props }: ReviewSearchProps) {
       className={cn("flex flex-col gap-6", className)}
       {...props}
     >
-      <input
+      <Input
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search reviews"
         aria-label="Search reviews"
-        className="h-10 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="h-10"
       />
       <ReviewGrid items={filtered} />
     </div>

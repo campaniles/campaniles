@@ -2,6 +2,12 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 
 const NAV_LINKS = [
   { href: "/news", label: "News" },
@@ -38,19 +44,37 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
           <span>Campaniles</span>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-6 text-sm font-medium md:flex">
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden justify-center md:flex">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-1">
+              {NAV_LINKS.map(({ href, label }) => (
+                <NavigationMenuItem key={href}>
+                  <NavigationMenuLink render={<Link href={href} />}>
+                    {label}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-        <span aria-hidden className="w-0" />
+        <div className="flex items-center justify-end">
+          <a
+            href="https://github.com/campaniles/campaniles"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub repository"
+            className="inline-flex items-center rounded-md p-1 opacity-80 transition-opacity hover:opacity-100"
+          >
+            <Image
+              src="/icons/socials/github/dark.png"
+              alt=""
+              width={20}
+              height={20}
+              className="size-5 object-contain"
+            />
+          </a>
+        </div>
       </div>
     </header>
   );
