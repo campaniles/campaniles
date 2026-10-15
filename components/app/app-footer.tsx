@@ -12,7 +12,7 @@ function AppFooter({ className, ...props }: AppFooterProps) {
     <footer
       data-slot="app-footer"
       className={cn(
-        "w-full border-t border-border bg-background",
+        "w-full bg-background",
         className
       )}
       {...props}

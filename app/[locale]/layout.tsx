@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 
 import { routing } from "@/i18n/routing";
+import { ThemeProvider } from "@/components/shared/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,10 +43,13 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

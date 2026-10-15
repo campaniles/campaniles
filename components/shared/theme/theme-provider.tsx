@@ -9,8 +9,9 @@ import type { ThemeProviderProps } from "next-themes";
  * Wraps `next-themes` with the project's defaults:
  * - `attribute="class"` toggles the `.dark` class on <html>, matching the
  *   `dark` custom variant defined in `app/globals.css`.
- * - Light and dark themes only; system preference is disabled.
- * - Light is the default theme.
+ * - Light, dark, and system preference are supported.
+ * - Light is the default theme (used until the user picks one, and when
+ *   "system" cannot be resolved).
  *
  * Defaults can be overridden per-usage via props.
  */
@@ -18,9 +19,8 @@ function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="class"
-      themes={["light", "dark"]}
       defaultTheme="light"
-      enableSystem={false}
+      enableSystem
       disableTransitionOnChange
       {...props}
     >

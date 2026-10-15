@@ -1,42 +1,61 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const THEMES = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+] as const;
 
 type ThemeToggleProps = Omit<
   React.ComponentProps<typeof Button>,
-  "onClick" | "children"
+  "children" | "render"
 >;
 
 /**
- * Button that toggles between the light and dark themes.
+ * Text-only theme picker.
  *
- * The icons are swapped purely via the `dark` CSS variant rather than
- * client-only state, so the markup is identical on the server and client and
- * there is no hydration mismatch.
+ * Opens a dropdown with Light / Dark / System options. The active selection is
+ * indicated within the menu, so the trigger label stays static and the markup
+ * is identical on the server and client (no hydration mismatch).
  */
 function ThemeToggle({
   variant = "ghost",
-  size = "icon-sm",
+  size = "sm",
   ...props
 }: ThemeToggleProps) {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
-    <Button
-      variant={variant}
-      size={size}
-      aria-label="Toggle theme"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      {...props}
-    >
-      <Sun className="hidden dark:block" />
-      <Moon className="block dark:hidden" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={
+          <Button variant={variant} size={size} {...props}>
+            Theme
+          </Button>
+        }
+      />
+      <DropdownMenuContent align="end">
+        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+          {THEMES.map(({ value, label }) => (
+            <DropdownMenuRadioItem key={value} value={value}>
+              {label}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
