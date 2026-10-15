@@ -17,6 +17,11 @@ export const routing = defineRouting({
   locales: ["en"],
   defaultLocale: "en",
   localePrefix: "as-needed",
+  // Persist the visitor's language choice so returning visitors land in the
+  // locale they last used. One year, site-wide.
+  localeCookie: {
+    maxAge: 60 * 60 * 24 * 365,
+  },
 });
 
 export type Locale = (typeof routing.locales)[number];
