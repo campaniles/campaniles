@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 type AppHeaderProps = React.ComponentProps<"header">;
 
@@ -24,7 +23,12 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
         </Link>
 
         <nav className="flex items-center gap-1 text-sm">
-          <Button variant="ghost" size="sm" render={<Link href="/" />}>
+          <Button
+            variant="ghost"
+            size="sm"
+            nativeButton={false}
+            render={<Link href="/" />}
+          >
             Home
           </Button>
         </nav>
