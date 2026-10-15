@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
 type AppHeaderProps = React.ComponentProps<"header">;
@@ -21,17 +20,6 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
         >
           Campaniles
         </Link>
-
-        <nav className="flex items-center gap-1 text-sm">
-          <Button
-            variant="ghost"
-            size="sm"
-            nativeButton={false}
-            render={<Link href="/" />}
-          >
-            Home
-          </Button>
-        </nav>
       </div>
     </header>
   );
