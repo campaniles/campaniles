@@ -16,7 +16,7 @@ function AppHeader({ className, ...props }: AppHeaderProps) {
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="font-semibold tracking-tight text-foreground"
+          className="text-base font-semibold tracking-tight text-foreground sm:text-lg"
         >
           Campaniles
         </Link>

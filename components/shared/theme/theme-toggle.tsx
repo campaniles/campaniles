@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -31,8 +32,9 @@ type ThemeToggleProps = Omit<
  * is identical on the server and client (no hydration mismatch).
  */
 function ThemeToggle({
-  variant = "ghost",
+  variant = "link",
   size = "sm",
+  className,
   ...props
 }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
@@ -41,7 +43,12 @@ function ThemeToggle({
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant={variant} size={size} {...props}>
+          <Button
+            variant={variant}
+            size={size}
+            className={cn("px-1 text-foreground underline", className)}
+            {...props}
+          >
             Theme
           </Button>
         }
